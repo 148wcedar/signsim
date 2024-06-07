@@ -41,6 +41,18 @@ export const appRouter = createBrowserRouter([
           { path: "*", element: <PrivError404 /> },
         ],
       },
+/***
+      {
+        path: "/std",
+        element: <StdLayout />,
+        children: [
+          { index: true, element: <StdError404 /> },
+          { path: "home", element: <StdHome /> },
+          { path: "about", element: <StdAbout /> },
+          { path: "*", element: <StdError404 /> },
+        ],
+      },
+***/
     ],
   },
 ]);
