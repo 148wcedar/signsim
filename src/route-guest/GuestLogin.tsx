@@ -15,7 +15,7 @@ const GuestLogin = () => {
         className="plain_button_enabled"
         onClick={() => {
           console.log("Click for login");
-          rootContext.identitySdk.login();
+          //rootContext.identitySdk.login();
         }}
       >
         log in now

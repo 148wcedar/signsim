@@ -1,12 +1,10 @@
 import { Outlet, useOutletContext } from "react-router-dom";
 import React from "react";
-import { VatomIdentitySDK } from "@vatom/identity-sdk";
 import { DiagConfig, DiagStamp } from "../components/Diagnostics";
 import "../Common.css";
 
 export interface RootContext {
   isUserLoggedIn: boolean;
-  identitySdk: VatomIdentitySDK;
   diagConfig: DiagConfig;
 }
 
@@ -15,39 +13,14 @@ export function useRootContext_FromOutletContext() {
 }
 
 export function RootLayout() {
-  const clientId = "dce3993b6a24c278";
-  //const sdkConfig = {};
-  const sdkConfig = {
-    loginCallbackUri: "/login",
-    logoutCallbackUri: "/",
-    authority: "https://id.vatom.com",
-    businessId: "3UewHF0ge9",
-  };
-  const identitySdk = new VatomIdentitySDK(clientId, sdkConfig);
-  const [accessToken, setAccessToken] = React.useState(
-    identitySdk.getAccessToken()
-  );
   const [rootContext] = React.useState<RootContext>({
     //
-    isUserLoggedIn: !!accessToken,
-    identitySdk: identitySdk,
+    isUserLoggedIn: false,
     diagConfig: {
       showLayoutNames: true,
       logOnRender: true,
     },
-  }); // Not using setRootContext
-  //const copyRootContext: RootContext = rootContext;
-
-  React.useEffect(() => {
-    const triggerCallback = async () => {
-      // Put this inside your callback components
-      const res = await identitySdk.onCallbacks();
-      if (res) {
-        setAccessToken(identitySdk.getAccessToken());
-      }
-    };
-    triggerCallback();
-  }, []);
+  }); 
 
   //console.log('In RootLayout');
 
