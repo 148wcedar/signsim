@@ -4,6 +4,7 @@ I considered 3 approaches for rendering a sequence of animation frames from a JS
 - Canvas API plus separate libraries for generating PNG then MP4
   - https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
 - https://www.remotion.dev/
+- https://motioncanvas.io/
 
 
 I began thinking about using React to build a demo. ReMotion was built for React and doesn't require integration of separate libraries for formatting bitmap frames which then need to be translated to MP4 as would be required with the basic Canvas API. ReMotion comes integrated with FFmpeg for generating MP4 and other video formats. With ReMotion grabbing my attention, I searched for its competition and discovered [this comparison between ReMotion and Motion Canvas](https://www.remotion.dev/docs/compare/motion-canvas).
